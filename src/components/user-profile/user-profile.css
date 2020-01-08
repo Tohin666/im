@@ -1,0 +1,86 @@
+.left-sider div {
+    margin-top: 68px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 48px;
+    color: #535374;
+    background: rgba(104, 121, 187, 0.1);
+    padding: 0 24px;
+    border-left: 4px solid #6879BB;
+}
+
+.profile-title {
+    margin-top: 24px;
+    margin-right: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 48px;
+    color: #404064;
+}
+
+.profile-title button {
+    background: #FFCE0C;
+    border-width: 0;
+    border-radius: 4px;
+    padding: 10px 40px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #333333;
+}
+
+.profile-content {
+    background: #FFFFFF;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin: 18px 22px 36px 0;
+    padding: 24px 24px 36px;
+}
+
+.profile-content label {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 34px;
+    color: #999999;
+}
+
+.profile-content input {
+    background: #FFFFFF;
+    border: 1px solid #D6DCE9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #6879BB;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.profile-content hr {
+    border: none;
+    color: #D6DCE9;
+    background-color: #D6DCE9;
+    height: 1px;
+    margin: 24px 0;
+}
+
+.profile-content button {
+    margin-top: 12px;
+    padding: 10px 40px;
+    border: 1px solid #6879BB;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);    
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #6879BB;
+}

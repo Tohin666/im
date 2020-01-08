@@ -1,11 +1,15 @@
 import React from 'react';
 import ProcessList from '../process-list';
+import UserProfile from '../user-profile';
+
+import './app.css';
 
 const App = () => {
 
     return (
         <div>                       
-            <ProcessList />
+            <UserProfile />
+            {/* <ProcessList /> */}
         </div>
     );
 
