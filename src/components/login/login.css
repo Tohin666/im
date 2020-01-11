@@ -1,0 +1,66 @@
+.bg {
+    height: 100vh;
+    background: linear-gradient(213.53deg, #6879BB 7.06%, #9300BB 95.23%);
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+.logo {
+    margin: 32px;
+    width: 150px;
+}
+
+.login-content {
+    margin: 0 auto;
+    padding: 36px 48px;
+    max-width: 424px;
+    min-height: 70vh;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    color: #404064;
+    text-align: left;
+}
+
+.login-content form {
+    margin-top: 22px;
+}
+
+.login-content input {
+    background: #FFFFFF;
+    border: 1px solid #D6DCE9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #6879BB;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.login-content button {
+    margin-top: 12px;
+    padding: 9px;
+    width: 100%;
+    border: 0;    
+    border-radius: 4px;
+    background: #FFCE0C;    
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #333333;
+    opacity: 0.5;
+}
+
+.login-content button .active {    
+    opacity: 1;
+}
