@@ -4,7 +4,7 @@ const updateUserList = (state, action) => {
         return {
             users: [],
             isLogged: true,
-            token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ2YXN5YUBtYWlsLnJ1IiwiaWF0IjoxNTc5MTk4NzU5LCJleHAiOjE2MTA3NTYzNTl9.hCG6eIqKZ_djAgRe2f45rbLM4sIhGGbc6ZJafW0MGa0'
+            token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ2YXN5YUBtYWlsLnJ1IiwiaWF0IjoxNTc5NDcwNDY2LCJleHAiOjE2MTEwMjgwNjZ9.Ad1TCXhBF6jW-aapnojiQxSfgUSh5HVR8qbUnSkjrHQ'
         };
     }
 

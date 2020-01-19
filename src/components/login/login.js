@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { withGraphqlService } from '../hoc';
-import { fetchUsers, userAdded } from '../../actions';
+import { fetchUsers } from '../../actions';
 import { compose } from '../../utils';
 
 import './login.css';
@@ -12,10 +12,6 @@ class Login extends Component {
     constructor() {
         super();
         this.state = { value: '' };
-    }
-
-    componentDidMount() {
-        this.props.fetchUsers();
     }
 
     handleChange = (event) => {
@@ -29,8 +25,6 @@ class Login extends Component {
 
     render() {
         const props = this.props;
-        console.log('пропс: ', props);
-        console.log('стейт: ', this.state);
 
         const renderForm = () => {
             if (props.userList.isLogged) {
@@ -81,8 +75,7 @@ const mapStateToProps = ({ userList }) => {
 
 const mapDispatchToProps = (dispatch, { graphqlService }) => {
     return {
-        fetchUsers: fetchUsers(graphqlService, dispatch),
-        userAdded: (id) => dispatch(userAdded(id))
+        fetchUsers: fetchUsers(graphqlService, dispatch),        
     };
 };
 

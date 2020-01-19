@@ -1,67 +1,42 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import ProcessList from '../process-list';
-import UserProfile from '../user-profile';
-import Login from '../login';
+import { connect } from 'react-redux';
 
-import './app.css';
-
-import { graphql } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 
-const cache = new InMemoryCache();
-const link = new HttpLink({
-    uri: 'http://localhost:4000/api',
-    headers: {       
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ2YXN5YUBtYWlsLnJ1IiwiaWF0IjoxNTc5MTk4NzU5LCJleHAiOjE2MTA3NTYzNTl9.hCG6eIqKZ_djAgRe2f45rbLM4sIhGGbc6ZJafW0MGa0"
-    }
-});
+import ProcessList from '../process-list';
+import UserProfile from '../user-profile';
+import Login from '../login';
+import { withGraphqlService } from '../hoc';
+import { fetchUsers } from '../../actions';
+import { compose } from '../../utils';
 
-const client = new ApolloClient({
-    cache,
-    link
-});
-
-
-const UsersList = ({ data: { loading, error, allUsers } }) => {
-    if (loading) {
-        return <p>Loading ...</p>;
-    }
-    if (error) {
-        return <p>{error.message}</p>;
-    }
-
-    return <ul>
-        {allUsers.map(user => <li key={user.id}>{user.firstName}</li>)}
-    </ul>;
-};
-
-const allUsersQuery = gql`
-query allUsersQuery {
-    allUsers {
-      id
-      firstName
-      secondName
-      email
-    }
-  }
-`;
-
-const UsersListWithData = graphql(allUsersQuery)(UsersList);
+import './app.css';
 
 class App extends Component {
+
+    cache = new InMemoryCache();
+    link = new HttpLink({
+        uri: 'http://localhost:4000/api',
+        headers: {
+            "Authorization": `Bearer ${this.props.userList.token}`
+        }
+    });
+    client = new ApolloClient({
+        cache: this.cache,
+        link: this.link
+    });
+
     render() {
         return (
-            <ApolloProvider client={client}>
+            <ApolloProvider client={this.client}>
                 <div>
-                    <UsersListWithData />
                     <Switch>
                         <Route path="/" component={ProcessList} exact />
-                        <Route path="/login" component={Login} exact />
+                        <Route path="/login" component={Login} />
                         <Route path="/process-list" component={ProcessList} />
                         <Route path="/user-profile" component={UserProfile} />
                     </Switch>
@@ -71,4 +46,17 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = ({ userList }) => {
+    return { userList };
+};
+
+const mapDispatchToProps = (dispatch, { graphqlService }) => {
+    return {
+        fetchUsers: fetchUsers(graphqlService, dispatch),
+    };
+};
+
+export default compose(
+    withGraphqlService(),
+    connect(mapStateToProps, mapDispatchToProps)
+)(App);

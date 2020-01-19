@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, setConfiguration } from 'react-grid-system';
 
 import './user-profile.css';
@@ -23,7 +24,9 @@ const UserProfile = () => {
                     <Row>
                         <Col sm={2} className="left-sider">
                             <div>
-                                Общие данные
+                                <Link to="/process-list">                                    
+                                    Общие данные
+                                </Link>
                             </div>
                         </Col>
                         <Col sm={10}>
@@ -41,7 +44,7 @@ const UserProfile = () => {
                                 <div className="profile-content">
                                     <Row>
                                         <Col sm={3}>
-                                            <label for="first-name">
+                                            <label htmlFor="first-name">
                                                 Имя
                                             </label>
                                         </Col>
@@ -51,43 +54,43 @@ const UserProfile = () => {
                                     </Row>
                                     <Row>
                                         <Col sm={3}>
-                                            <label for="last-name">
+                                            <label htmlFor="last-name">
                                                 Фамилия
                                             </label>
                                         </Col>
                                         <Col sm={5}>
                                             <input type="text" name="last-name" value="Годунов" />
-                                        </Col>                                        
+                                        </Col>
                                     </Row>
                                     <hr />
                                     <Row>
                                         <Col sm={3}>
-                                            <label for="last-name">
+                                            <label htmlFor="last-name">
                                                 Электронная почта
                                             </label>
                                         </Col>
                                         <Col sm={5}>
                                             <input type="email" name="email" value="qwerty@yandex.ru" />
-                                        </Col>                                        
+                                        </Col>
                                     </Row>
                                     <Row>
                                         <Col sm={3}>
-                                            <label for="last-name">
+                                            <label htmlFor="last-name">
                                                 Введите пароль
                                             </label>
                                         </Col>
                                         <Col sm={5}>
                                             <input type="password" name="password" value="password" />
-                                        </Col>                                        
+                                        </Col>
                                     </Row>
                                     <Row>
-                                        <Col sm={3}>                                            
+                                        <Col sm={3}>
                                         </Col>
                                         <Col sm={5}>
                                             <button type="submit">
                                                 Сменить пароль
                                             </button>
-                                        </Col>                                        
+                                        </Col>
                                     </Row>
                                 </div>
                             </form>
@@ -97,7 +100,6 @@ const UserProfile = () => {
             </Container>
         </div>
     );
-
 };
 
 export default UserProfile;

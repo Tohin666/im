@@ -1,5 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-grid-system';
+import Moment from 'react-moment';
+import moment from 'moment/min/moment-with-locales';
 
 import './process-item.css';
 import updateIcon from './update.png';
@@ -8,13 +10,15 @@ import activeTimeIcon from './active-time.png';
 import employeesIcon from './employees.png';
 import scenarioIcon from './scenario.png';
 
-const ProcessItem = () => {
+moment.locale('ru');
+
+const ProcessItem = ({ process }) => {
 
     return (
-        <div className="block">
+        <div className="block">            
             <div className="block-header">
                 <div>
-                    Рассмотрение кредитной заявки
+                    {process.name}
                 </div>
                 <div className="small-text">
                     На карту процесса >
@@ -26,7 +30,7 @@ const ProcessItem = () => {
                         <img src={updateIcon} alt="" />
                     </div>
                     <div>
-                        340 487
+                        {process.numberOfExecutions}
                         <div className="small-text">
                             выполнено раз
                         </div>
@@ -38,7 +42,9 @@ const ProcessItem = () => {
                             <img src={timeIcon} alt="" />
                         </div>
                         <div>
-                            10ч 36 мин
+                            <Moment format='HHч mmмин'>
+                                {moment.utc(Number(process.averageLeadTime))}
+                            </Moment>
                             <div className="small-text">
                                 среднее время выполнения
                             </div>
@@ -49,7 +55,11 @@ const ProcessItem = () => {
                             <img src={activeTimeIcon} alt="" />
                         </div>
                         <div>
-                            1ч 7 мин (10,5%)
+                            <Moment format='HHч mmмин '>
+                                {moment.utc(Number(process.averageActiveTime))}
+                            </Moment>
+                            ({Math.round((process.averageActiveTime / process.averageLeadTime * 100) * 10) / 10}%)
+                            <br />
                             <div className="small-text">
                                 среднее активное время
                             </div>
@@ -62,7 +72,7 @@ const ProcessItem = () => {
                             <img src={employeesIcon} alt="" />
                         </div>
                         <div>
-                            120 сотрудников
+                            {process.employeesInvolvedProcess} сотрудников
                             <div className="small-text">
                                 участвует в процессе
                             </div>
@@ -73,7 +83,7 @@ const ProcessItem = () => {
                             <img src={scenarioIcon} alt="" />
                         </div>
                         <div>
-                            129 сценариев
+                            {process.numberOfScenarios} сценариев
                             <div className="small-text">
                                 в процессе
                             </div>
@@ -95,19 +105,25 @@ const ProcessItem = () => {
                         </div>
                         <div className="text-3 date">
                             <div>
-                                11 ноября 2017
+                                <Moment format='D MMMM YYYY'>
+                                    {moment.utc(Number(process.start) * 1000)}
+                                </Moment>
                             </div>
                             <div>
-                                6 января 2018
+                                <Moment format='D MMMM YYYY'>
+                                    {moment.utc(Number(process.end) * 1000)}
+                                </Moment>
                             </div>
                             <div>
-                                10 января 2018
+                                <Moment format='D MMMM YYYY'>
+                                    {moment.utc(Number(process.loading) * 1000)}
+                                </Moment>
                             </div>
                         </div>
                     </div>
                 </Col>
             </Row>
-        </div>                            
+        </div>
     );
 };
 

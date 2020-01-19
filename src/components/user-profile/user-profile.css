@@ -9,6 +9,11 @@
     border-left: 4px solid #6879BB;
 }
 
+.left-sider a {
+    text-decoration: none;
+    color: #535374;
+}
+
 .profile-title {
     margin-top: 24px;
     margin-right: 22px;
